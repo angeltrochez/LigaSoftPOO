@@ -17,6 +17,7 @@ public class UsuariosGUI extends javax.swing.JFrame {
      */
     public UsuariosGUI() {
         initComponents();
+        txtIdUsuario.setVisible(false);
     }
 
     /**
@@ -32,12 +33,10 @@ public class UsuariosGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtNombreCompleto = new javax.swing.JTextField();
         txtEdad = new javax.swing.JTextField();
-        txtCorreo = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
@@ -50,6 +49,7 @@ public class UsuariosGUI extends javax.swing.JFrame {
         cbxSexo = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtDatos = new javax.swing.JTable();
+        txtIdUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,9 +64,6 @@ public class UsuariosGUI extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Edad:");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("Correo:");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Usuario");
@@ -83,8 +80,6 @@ public class UsuariosGUI extends javax.swing.JFrame {
 
         txtEdad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        txtCorreo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -97,12 +92,27 @@ public class UsuariosGUI extends javax.swing.JFrame {
 
         btnBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnActualizar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnMenuP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnMenuP.setText("Regresar al Menu Principal");
@@ -115,6 +125,12 @@ public class UsuariosGUI extends javax.swing.JFrame {
 
         cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
 
+        jScrollPane2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane2MouseClicked(evt);
+            }
+        });
+
         jtDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -126,7 +142,14 @@ public class UsuariosGUI extends javax.swing.JFrame {
 
             }
         ));
+        jtDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtDatosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jtDatos);
+
+        txtIdUsuario.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,14 +160,15 @@ public class UsuariosGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(208, 208, 208)
                         .addComponent(jLabel1)
-                        .addGap(0, 190, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
@@ -154,7 +178,6 @@ public class UsuariosGUI extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNombreCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                                     .addComponent(txtEdad)
-                                    .addComponent(txtCorreo)
                                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbxTipoUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -171,7 +194,7 @@ public class UsuariosGUI extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -188,7 +211,9 @@ public class UsuariosGUI extends javax.swing.JFrame {
                             .addComponent(cbxTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -199,29 +224,26 @@ public class UsuariosGUI extends javax.swing.JFrame {
                             .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscar))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                            .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnMenuP)
                 .addGap(21, 21, 21))
@@ -236,17 +258,57 @@ public class UsuariosGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreCompletoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-       int idUsuario = 2;
-       String NombreCompleto = txtNombreCompleto.getText();
-       String Sexo = cbxSexo.getToolTipText(); 
-       int Edad = Integer.parseInt(txtEdad.getText());
-       String Usuario = txtUsuario.getText(); 
-       String Contrasena = txtContrasena.getText();
-       String TipoUsuario = cbxTipoUsuario.getToolTipText();
        Usuarios  us = new Usuarios();
-       us.agregarUsuario(idUsuario,NombreCompleto,Sexo,Edad,Usuario,Contrasena,TipoUsuario);
+       us.setNombreCompleto(txtNombreCompleto.getText());
+       us.setSexo((String)cbxSexo.getSelectedItem());
+       us.setEdad(Integer.parseInt(txtEdad.getText()));
+       us.setUsuario(txtUsuario.getText()); 
+       us.setContrasena(txtContrasena.getText());
+       us.setTipoUsuario((String)cbxTipoUsuario.getSelectedItem());
+       us.agregarUsuario();
+       us = null;
+       limpiar();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       Usuarios  us = new Usuarios();
+       us.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+       us.eliminarUsuario();
+       us.buscarUsuario();
+       limpiar();
+       us = null;
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+       Usuarios  us = new Usuarios();
+       limpiar();
+       us.setNombreCompleto(txtNombreCompleto.getText());
+       us.buscarUsuario();
+       us = null;
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+       
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void jtDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtDatosMouseClicked
+        Usuarios  us = new Usuarios();
+        us.mostrarUsuarios();
+        us = null;
+    }//GEN-LAST:event_jtDatosMouseClicked
+
+    private void jScrollPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPane2MouseClicked
+    private void limpiar(){
+       txtNombreCompleto.setText(null);
+       cbxSexo.setSelectedItem(null);
+       txtEdad.setText(null);
+       txtUsuario.setText(null);
+       txtContrasena.setText(null);
+       cbxTipoUsuario.setSelectedItem(null);
+       txtUsuario.setText(null);
+    }
     /**
      * @param args the command line arguments
      */
@@ -289,22 +351,21 @@ public class UsuariosGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnMenuP;
-    private javax.swing.JComboBox<String> cbxSexo;
-    private javax.swing.JComboBox<String> cbxTipoUsuario;
+    public static javax.swing.JComboBox<String> cbxSexo;
+    public static javax.swing.JComboBox<String> cbxTipoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jtDatos;
-    private javax.swing.JPasswordField txtContrasena;
-    private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtEdad;
-    private javax.swing.JTextField txtNombreCompleto;
-    private javax.swing.JTextField txtUsuario;
+    public static javax.swing.JTable jtDatos;
+    public static javax.swing.JPasswordField txtContrasena;
+    public static javax.swing.JTextField txtEdad;
+    public static javax.swing.JTextField txtIdUsuario;
+    public static javax.swing.JTextField txtNombreCompleto;
+    public static javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,26 +23,31 @@ public class ConexionDB {
     protected Connection conexion = null;
     protected ResultSet rst = null;
     protected Statement st = null;
+    protected String consultaSQL = null;
     
     public void conexion(){
         if(conexion != null){
             return;
         }
         
-        String url="jdbc:postgresql://127.0.0.1:50531/postgres";
+        String url="jdbc:postgresql://localhost:5432/LigaSotfDB?";
         String passwordDB ="abc123**";
+       
         try{
             Class.forName("org.postgresql.Driver");
             
             conexion = DriverManager.getConnection(url,"postgres",passwordDB);
-            
-            if(conexion != null){
-                JOptionPane.showMessageDialog(null, "Error al conectar a la Base de Datos", "Error de Conexión",JOptionPane.ERROR_MESSAGE);
-            }
-        
-        }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Problemas de Conexión", "Error de Conexión",JOptionPane.ERROR_MESSAGE);
-        }
+         
+                    
+           /* if(conexion != null){
+                 JOptionPane.showMessageDialog(null, "Conectando a la base de datos...", "Estableciendo Conexion",JOptionPane.OK_OPTION);
+             
+             }*/
+                   
+      }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Problemas de Conexión "+e.getMessage(), "Error de Conexión",JOptionPane.ERROR_MESSAGE);
+      }
+   
             
             
             
