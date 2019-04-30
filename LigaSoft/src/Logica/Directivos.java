@@ -6,7 +6,7 @@
 package Logica;
 
 import Logica.ConexionDB;
-import GUI.UsuariosGUI;
+import GUI.DirectivosGUI;
 import java.awt.List;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,20 +15,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
- * @author Angel Santiago Trochez
+ * @author Santiago
  */
-public class Usuarios implements Personas {
-
-    private int idUsuario;
+public class Directivos implements Personas{
+    private int idDirectivo;
     private String nombreCompleto;
     private String sexo;
     private int edad;
-    private String usuario;
-    private String contrasena;
-    private String tipoUsuario;
-    ArrayList<Usuarios> lista = new ArrayList<>();
+    private String equipo;
+    private String posicion;
+   
+    ArrayList<Directivos> lista = new ArrayList<>();
     
    
     public void setNombreCompleto(String nombreCompleto) {
@@ -43,6 +44,18 @@ public class Usuarios implements Personas {
         this.sexo = sexo;
     }
 
+	public void setIdDirectivo(int idDirectivo) {
+        this.idDirectivo = idDirectivo;
+    }
+	
+	public void setEquipo(String equipo){
+		this.equipo = equipo;
+	}
+	
+	public void setPosicion(String posicion){
+		this.posicion = posicion;
+	}
+	
     public String getNombreCompleto() {
         return this.nombreCompleto;
     }
@@ -55,48 +68,22 @@ public class Usuarios implements Personas {
         return this.sexo;
     }
 
-    public String getContrasena() {
-        return contrasena;
+       
+    public int getIdDirectivo() {
+        return this.idDirectivo;
     }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+	
+    public String getEquipo(){
+	return this.equipo;
     }
-
-   public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+	
+    public String getPosicion(){
+    	return posicion;
     }
-    
-    public String getTipoUsuario() {
-        return tipoUsuario;
-    }
-
+  
    
-    
-    public String getUsuario() {
-        return usuario;
-    }
-
-   public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-   
-       /**
-     * @return the idUsuario
-     */
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    /**
-     * @param idUsuario the idUsuario to set
-     */
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-   
-   //insertar nuevos usuarios a la base de datos alojada en un server Postgresql 11
-   public void agregarUsuario(){
+   //insertar nuevos directivos a la base de datos alojada en un server Postgresql 11
+   public void agregarDirectivo(){
       ConexionDB nuevaConexion = new ConexionDB();
       
       nuevaConexion.conexion();
@@ -104,21 +91,20 @@ public class Usuarios implements Personas {
       try{
           nuevaConexion.st =  nuevaConexion.conexion.createStatement();
           
-          nuevaConexion.consultaSQL=("INSERT INTO public.usuarios(nombre, edad, sexo, usuario, contrasena, tipousuario)VALUES("
+          nuevaConexion.consultaSQL=("INSERT INTO public.directivos(nombre, edad, sexo, equipo, posicion)VALUES("
                                 +"'"+nombreCompleto+"',"
                                  +"'"+edad+"',"
                                  +"'"+sexo+"',"
-                                 +"'"+usuario+"',"
-                                 +"'"+contrasena+"',"
-                                 +"'"+tipoUsuario+"')");
+                                 +"'"+equipo+"',"
+                                 +"'"+posicion+"')");
           
           int z = nuevaConexion.st.executeUpdate(nuevaConexion.consultaSQL);
             
           
            if(z==1){
-               JOptionPane.showMessageDialog(null, "Registro Exitoso", "Ingreso de Usuarios",JOptionPane.OK_OPTION);
+               JOptionPane.showMessageDialog(null, "Registro Exitoso", "Ingreso de Directivos",JOptionPane.OK_OPTION);
           }else{
-              JOptionPane.showMessageDialog(null, "Ocurrio un error al ingresar el usuario", "Ingreso de Usuarios",JOptionPane.OK_OPTION);
+              JOptionPane.showMessageDialog(null, "Ocurrio un error al ingresar el Directivos", "Ingreso de Directivos",JOptionPane.OK_OPTION);
           }
            
       }catch(Exception e){
@@ -126,7 +112,7 @@ public class Usuarios implements Personas {
       }
    }
    
-   public void eliminarUsuario(){
+   public void eliminarDirectivo(){
    
    ConexionDB nuevaConexion = new ConexionDB();
       
@@ -135,8 +121,8 @@ public class Usuarios implements Personas {
       try{
           nuevaConexion.st =  nuevaConexion.conexion.createStatement();
          
-          nuevaConexion.consultaSQL = "DELETE FROM usuarios"
-                  + " WHERE idusuarios="+idUsuario;
+          nuevaConexion.consultaSQL = "DELETE FROM directivos"
+                  + " WHERE iddirectivo="+idDirectivo;
           
           nuevaConexion.st.executeUpdate(nuevaConexion.consultaSQL);
         
@@ -147,7 +133,7 @@ public class Usuarios implements Personas {
    
    }
     
-   public void buscarUsuario(){
+   public void buscarDirectivo(){
    
       ConexionDB nuevaConexion = new ConexionDB();
       
@@ -155,45 +141,45 @@ public class Usuarios implements Personas {
       
       try{
           nuevaConexion.st =  nuevaConexion.conexion.createStatement();
-          nuevaConexion.consultaSQL = "select idusuarios, nombre, edad, sexo, usuario, tipousuario from usuarios"
+          nuevaConexion.consultaSQL = "select iddirectivos, nombre, edad, sexo, equipo, posicion from directivos"
                   + " WHERE nombre::text LIKE"+"'%"+nombreCompleto+"%'"
-                  + "ORDER BY idusuarios ASC";
+                  + "ORDER BY iddirectivos ASC";
          
           nuevaConexion.rst=nuevaConexion.st.executeQuery(nuevaConexion.consultaSQL);
          
            
           
            while(nuevaConexion.rst.next()){
-              Usuarios objUsuario = new Usuarios();
-               objUsuario.idUsuario = nuevaConexion.rst.getInt("idusuarios");
-               objUsuario.nombreCompleto = nuevaConexion.rst.getString("nombre");
-               objUsuario.edad = nuevaConexion.rst.getInt("edad");
-               objUsuario.sexo = nuevaConexion.rst.getString("sexo");
-               objUsuario.usuario = nuevaConexion.rst.getString("usuario");
-               objUsuario.tipoUsuario = nuevaConexion.rst.getString("tipousuario");
-               lista.add(objUsuario);
+              Directivos objDirectivo = new Directivos();
+               objDirectivo.idDirectivo = nuevaConexion.rst.getInt("iddirectivos");
+               objDirectivo.nombreCompleto = nuevaConexion.rst.getString("nombre");
+               objDirectivo.edad = nuevaConexion.rst.getInt("edad");
+               objDirectivo.sexo = nuevaConexion.rst.getString("sexo");
+               objDirectivo.equipo = nuevaConexion.rst.getString("equipo");
+               objDirectivo.posicion = nuevaConexion.rst.getString("posicion");
+               lista.add(objDirectivo);
            }
            
            DefaultTableModel model = new DefaultTableModel();
-            model.addColumn("Codigo Usuario");
+            model.addColumn("Codigo Directivo");
             model.addColumn("Nombre");
             model.addColumn("Sexo");
             model.addColumn("Edad");
-            model.addColumn("Usuario");
-            model.addColumn("Tipo Usuario"); 
+            model.addColumn("Equipo");
+            model.addColumn("Posicion"); 
            
             String datos[]= new String[6];
-           for(Usuarios elem : lista){
-               datos[0]=Integer.toString(elem.idUsuario);
+           for(Directivos elem : lista){
+               datos[0]=Integer.toString(elem.idDirectivo);
                datos[1]=(elem.nombreCompleto);
                datos[2]=(elem.sexo);
                datos[3]=Integer.toString(elem.edad);
-               datos[4]=(elem.usuario);
-               datos[5]=(elem.tipoUsuario);
+               datos[4]=(elem.equipo);
+               datos[5]=(elem.posicion);
                model.addRow(datos);
            }
           
-           UsuariosGUI.jtDatos.setModel(model);
+           DirectivosGUI.jtDatos.setModel(model);
           
       }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Problemas de Conexión "+ex.getMessage(), "Error de Conexión",JOptionPane.ERROR_MESSAGE);
@@ -202,35 +188,37 @@ public class Usuarios implements Personas {
    
    }
  
-   public void mostrarUsuarios(){
+ 
+       
+    public void mostrarDirectivos(){
     
       ConexionDB nuevaConexion = new ConexionDB();
       
       nuevaConexion.conexion();
       
-      int fila =UsuariosGUI.jtDatos.getSelectedRow();
+      int fila =DirectivosGUI.jtDatos.getSelectedRow();
       
         try{
-            nuevaConexion.consultaSQL = "Select * from usuarios WHERE idusuarios="+UsuariosGUI.jtDatos.getValueAt(fila, 0);
+            nuevaConexion.consultaSQL = "Select * from directivos WHERE iddirectivos="+DirectivosGUI.jtDatos.getValueAt(fila, 0);
             nuevaConexion.st = nuevaConexion.conexion.createStatement();
             nuevaConexion.rst = nuevaConexion.st.executeQuery(nuevaConexion.consultaSQL);
             nuevaConexion.rst.next();
             
-            UsuariosGUI.txtIdUsuario.setText( nuevaConexion.rst.getString("idusuarios"));
-            UsuariosGUI.txtNombreCompleto.setText( nuevaConexion.rst.getString("nombre"));
-            UsuariosGUI.cbxSexo.setSelectedItem(nuevaConexion.rst.getString("sexo"));
-            UsuariosGUI.txtEdad.setText( nuevaConexion.rst.getString("edad"));
-            UsuariosGUI.txtUsuario.setText( nuevaConexion.rst.getString("usuario"));
-            UsuariosGUI.txtContrasena.setText( nuevaConexion.rst.getString("contrasena"));
-            UsuariosGUI.cbxTipoUsuario.setSelectedItem(nuevaConexion.rst.getString("tipousuario"));
+            DirectivosGUI.txtIdDirectivo.setText( nuevaConexion.rst.getString("iddirectivos"));
+            DirectivosGUI.txtNombreCompleto.setText( nuevaConexion.rst.getString("nombre"));
+            DirectivosGUI.cbxSexo.setSelectedItem(nuevaConexion.rst.getString("sexo"));
+            DirectivosGUI.txtEdad.setText( nuevaConexion.rst.getString("edad"));
+            DirectivosGUI.cbxEquipo.setSelectedItem(nuevaConexion.rst.getString("equipo"));
+            DirectivosGUI.cbxPosicion.setSelectedItem(nuevaConexion.rst.getString("posicion"));
+            
             
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Problemas de Conexión "+e.getMessage(), "Error de Conexión",JOptionPane.ERROR_MESSAGE);
       }
     }
-    
-   public void actualizarUsuario(){
+     
+    public void actualizarDirectivo(){
    
     ConexionDB nuevaConexion = new ConexionDB();
       
@@ -239,13 +227,12 @@ public class Usuarios implements Personas {
       try{
           nuevaConexion.st =  nuevaConexion.conexion.createStatement();
                   
-	  nuevaConexion.consultaSQL = "UPDATE public.usuarios SET  nombre="+"'"+nombreCompleto+"'," 
+	  nuevaConexion.consultaSQL = "UPDATE public.directivos SET  nombre="+"'"+nombreCompleto+"'," 
                                          +"edad="+"'"+edad+"'," 
                                          +"sexo="+"'"+sexo+"'," 
-                                         +"usuario="+"'"+usuario+"'," 
-                                         +"contrasena="+"'"+contrasena+"'," 
-                                         +"tipousuario="+"'"+tipoUsuario+"'" 
-                                         +"WHERE idusuarios="+idUsuario;
+                                         +"equipo="+"'"+equipo+"',"
+                                          +"posicion="+"'"+posicion+"'"
+                                         +"WHERE iddirectivos="+idDirectivo;
         
          nuevaConexion.st.executeUpdate(nuevaConexion.consultaSQL);
         
