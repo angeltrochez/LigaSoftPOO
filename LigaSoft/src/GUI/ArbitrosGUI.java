@@ -142,13 +142,12 @@ public class ArbitrosGUI extends javax.swing.JFrame {
                     .addComponent(btnActualizar)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(btnMenuP)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2))
+                .addComponent(jScrollPane2)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(btnMenuP)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +184,9 @@ public class ArbitrosGUI extends javax.swing.JFrame {
                         .addComponent(btnBuscar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnMenuP)
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
 
         pack();

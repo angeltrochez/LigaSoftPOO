@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import Logica.Jugadores;
+
 /**
  *
  * @author Santiago
@@ -16,6 +18,7 @@ public class JugadoresGUI extends javax.swing.JFrame {
      */
     public JugadoresGUI() {
         initComponents();
+        txtIdJugador.setVisible(false);
     }
 
     /**
@@ -40,13 +43,16 @@ public class JugadoresGUI extends javax.swing.JFrame {
         cbxSexo = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtEdad1 = new javax.swing.JTextField();
-        txtEdad2 = new javax.swing.JTextField();
+        txtEquipo = new javax.swing.JTextField();
+        txtNumeroCamisa = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtDatos = new javax.swing.JTable();
         btnMenuP = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         cbxEstado = new javax.swing.JComboBox<>();
+        txtIdJugador = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtPosicion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,12 +79,32 @@ public class JugadoresGUI extends javax.swing.JFrame {
 
         btnActualizar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
+        });
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Edad:");
@@ -94,9 +120,9 @@ public class JugadoresGUI extends javax.swing.JFrame {
 
         jLabel6.setText("Numero de Camisa:");
 
-        txtEdad1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtEquipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        txtEdad2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtNumeroCamisa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jtDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,6 +135,11 @@ public class JugadoresGUI extends javax.swing.JFrame {
 
             }
         ));
+        jtDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtDatosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jtDatos);
 
         btnMenuP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -118,56 +149,71 @@ public class JugadoresGUI extends javax.swing.JFrame {
 
         cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Lesionado", "Expulsado" }));
 
+        txtIdJugador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtIdJugadorMouseClicked(evt);
+            }
+        });
+
+        jLabel8.setText("Posición");
+
+        txtPosicion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(200, 200, 200))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(btnMenuP)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(161, 161, 161)
+                                    .addComponent(txtIdJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel2)
+                                                .addComponent(jLabel3)
+                                                .addComponent(jLabel4)
+                                                .addComponent(jLabel5)
+                                                .addComponent(jLabel8))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(txtNumeroCamisa)
+                                                .addComponent(txtNombreCompleto)
+                                                .addComponent(cbxSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtEdad)
+                                                .addComponent(txtEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                                .addComponent(cbxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtPosicion))))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnActualizar))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtEdad2)
-                                            .addComponent(txtNombreCompleto)
-                                            .addComponent(cbxSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtEdad)
-                                            .addComponent(txtEdad1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cbxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnActualizar)))
-                            .addComponent(jLabel7))
+                                .addGap(141, 141, 141)
+                                .addComponent(btnMenuP)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addComponent(txtIdJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -184,27 +230,30 @@ public class JugadoresGUI extends javax.swing.JFrame {
                             .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEdad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEdad2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(txtNumeroCamisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAgregar)
                         .addGap(15, 15, 15)
                         .addComponent(btnActualizar)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminar)
                         .addGap(22, 22, 22)
-                        .addComponent(btnBuscar)
-                        .addGap(27, 27, 27)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                        .addComponent(btnBuscar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMenuP))
         );
@@ -218,9 +267,78 @@ public class JugadoresGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreCompletoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-
+       Jugadores  juga = new Jugadores();
+       juga.setNombreCompleto(txtNombreCompleto.getText());
+       juga.setSexo((String)cbxSexo.getSelectedItem());
+       juga.setEdad(Integer.parseInt(txtEdad.getText()));
+       juga.setEquipo(txtEquipo.getText()); 
+       juga.setNumeroCamisa(Integer.parseInt(txtNumeroCamisa.getText()));
+       juga.setEquipo(txtPosicion.getText()); 
+       juga.setEstado((String)cbxEstado.getSelectedItem());
+       juga.agregarJugador();
+       juga = null;
+       limpiar();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+       Jugadores  juga = new Jugadores();
+       juga.setIdJugador(Integer.parseInt(txtIdJugador.getText()));
+       juga.setNombreCompleto(txtNombreCompleto.getText());
+       juga.setSexo((String)cbxSexo.getSelectedItem());
+       juga.setEdad(Integer.parseInt(txtEdad.getText()));
+       juga.setEquipo(txtEquipo.getText()); 
+       juga.setPosicion(txtPosicion.getText()); 
+       juga.setNumeroCamisa(Integer.parseInt(txtNumeroCamisa.getText()));
+       juga.setEstado((String)cbxEstado.getSelectedItem());
+       juga.actualizarJugador();
+       juga.setNombreCompleto(txtNombreCompleto.getText());
+       juga.buscarJugador();
+       juga = null;
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       Jugadores  juga = new Jugadores();
+       juga.setIdJugador(Integer.parseInt(txtIdJugador.getText()));
+       juga.eliminarJugador();
+       juga.setNombreCompleto(txtNombreCompleto.getText());
+       juga.buscarJugador();
+       limpiar();
+       juga = null;
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+       Jugadores  juga = new Jugadores();
+       limpiar();
+       juga.setNombreCompleto(txtNombreCompleto.getText());
+       juga.buscarJugador();
+       juga = null;
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+       
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void txtIdJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIdJugadorMouseClicked
+        
+
+    }//GEN-LAST:event_txtIdJugadorMouseClicked
+
+    private void jtDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtDatosMouseClicked
+         Jugadores  juga = new Jugadores();
+        juga.mostrarJugador();
+        juga = null;
+    }//GEN-LAST:event_jtDatosMouseClicked
+
+    public void limpiar(){
+    txtIdJugador.setText(null);    
+    txtNombreCompleto.setText(null);    
+    cbxSexo.setSelectedItem(null);    
+    txtEdad.setText(null);
+    txtEquipo.setText(null);    
+    txtNumeroCamisa.setText(null);  
+    txtPosicion.setText(null);
+    cbxEstado.setSelectedItem(null);
+    }
     /**
      * @param args the command line arguments
      */
@@ -263,8 +381,8 @@ public class JugadoresGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnMenuP;
-    private javax.swing.JComboBox<String> cbxEstado;
-    private javax.swing.JComboBox<String> cbxSexo;
+    public static javax.swing.JComboBox<String> cbxEstado;
+    public static javax.swing.JComboBox<String> cbxSexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -272,11 +390,14 @@ public class JugadoresGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jtDatos;
-    private javax.swing.JTextField txtEdad;
-    private javax.swing.JTextField txtEdad1;
-    private javax.swing.JTextField txtEdad2;
-    private javax.swing.JTextField txtNombreCompleto;
+    public static javax.swing.JTable jtDatos;
+    public static javax.swing.JTextField txtEdad;
+    public static javax.swing.JTextField txtEquipo;
+    public static javax.swing.JTextField txtIdJugador;
+    public static javax.swing.JTextField txtNombreCompleto;
+    public static javax.swing.JTextField txtNumeroCamisa;
+    public static javax.swing.JTextField txtPosicion;
     // End of variables declaration//GEN-END:variables
 }
