@@ -30,11 +30,6 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="txtIdArbitro" min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
-<<<<<<< HEAD
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane2" max="32767" attributes="0"/>
-=======
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -83,13 +78,7 @@
                       <Component id="btnBuscar" min="-2" pref="83" max="-2" attributes="0"/>
                   </Group>
               </Group>
->>>>>>> d4c9d5666a1d44fd190cdd367ffb9b7c01352827
               <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
-              <Component id="btnMenuP" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -122,11 +111,6 @@
                       </Group>
                   </Group>
               </Group>
-<<<<<<< HEAD
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollPane2" pref="371" max="32767" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-=======
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -139,9 +123,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPaneArbitros" pref="287" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
->>>>>>> d4c9d5666a1d44fd190cdd367ffb9b7c01352827
               <Component id="btnMenuP" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
