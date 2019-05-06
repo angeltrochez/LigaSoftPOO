@@ -61,74 +61,51 @@ public class Calendario {
         return equipoVisita;
     }
 
-
     public void setEquipoVisita(String equipoVisita) {
         this.equipoVisita = equipoVisita;
     }
-
 
     public String getFecha() {
         return fecha;
     }
 
-    /**
-     * @param fecha the fecha to set
-     */
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    /**
-     * @return the hora
-     */
     public String getHora() {
         return hora;
     }
 
-    /**
-     * @param hora the hora to set
-     */
     public void setHora(String hora) {
         this.hora = hora;
     }
 
-    /**
-     * @return the lugar
-     */
     public String getLugar() {
         return lugar;
     }
 
-    /**
-     * @param lugar the lugar to set
-     */
     public void setLugar(String lugar) {
         this.lugar = lugar;
     }
 
-    /**
-     * @return the partido
-     */
     public String getPartido() {
         return partido;
     }
 
-    /**
-     * @param partido the partido to set
-     */
     public void setPartido(String partido) {
         this.partido = partido;
     }
-   
-   
-    
+
     
     public void generarCalendario(){
+        
     ConexionDB nuevaConexion = new ConexionDB();
     nuevaConexion.conexion(); 
     
     ArrayList <Integer> clubes=new ArrayList<>();
      
+    
     try{   
         nuevaConexion.st =  nuevaConexion.conexion.createStatement();
         
@@ -137,103 +114,112 @@ public class Calendario {
         
         
         nuevaConexion.rst = nuevaConexion.st.executeQuery(nuevaConexion.consultaSQL);
-             
-
-       
 
         while(nuevaConexion.rst.next()){
             int id =(nuevaConexion.rst.getInt("idequipos"));
             clubes.add(id);
         }
         int cantEquipos = clubes.size();
-        
+        cantEquipos++;
         int matriz[][] = new int[cantEquipos][cantEquipos];
-        
-        
-        
-      //  matriz[0][0]=0;
-        
+    //    int temp[][] = new int[(cantEquipos-2)*(cantEquipos-1)][2]; //[cant partidos en total][local,visita]
         
         int k=0;
+        for(int i=1; i<cantEquipos; i++){
+            matriz[0][i]=clubes.get(k);
+            matriz[i][0]=clubes.get(k);
+            k++;
+        }
+        
+        /*
         for(int i=0; i<cantEquipos; i++){
             for(int j=0; j<cantEquipos; j++){
-                matriz[0][j]=1;//clubes.get(k);
-                matriz[i][0]=1; //clubes.get(k);
-                k++;
-            }
-        }
-        
-        for(int i=1; i<=cantEquipos; i++){
-            for(int j=1; j<=cantEquipos; j++){
-                matriz[i][j]=0;
-            }
-        }
-        
-        for(int i=0; i<=cantEquipos; i++){
-            for(int j=0; j<=cantEquipos; j++){
-                System.out.println(matriz[i][j]);
+                System.out.print(matriz[i][j]+" ");
             }
             System.out.println("");
         }
 
         
+        */
+        System.out.println("-----------------------------");
 
-      
- 
-        boolean impar=(cantEquipos%2!=0);
+        int numeroV; 
+        int n=1;
+        int local=1;
+        //int tem=0;
+            
+        
+        do{  
+            n=1;
+            do{        
+                do{
+                    numeroV = (int)(Math.random() * cantEquipos-1)+1;
+                }while(numeroV==local);
+                
+                if(matriz[local][numeroV]==0){
+                   matriz[local][numeroV]=1;          
+                   
+                //    temp[tem][0] = matriz[local][0];
+                //    temp[tem][1] = matriz[0][numeroV];
+                //    temp[tem][2] = 0; cambiar tamaño de las columnas
+                
+                    System.out.println(matriz[local][0]+" vrs "+matriz[0][numeroV]);
+                    //tem++;
+                    n++;
+                }
+                }while(n<(cantEquipos-1));
+            
+                System.out.println("");
+            local++;
+        }while(local<cantEquipos);
+        
+
+        /*
+
+
+                for(int i=0; i<(cantEquipos-2)*(cantEquipos-1); i++){
+                System.out.print(temp[i][0]+" Vrs "+temp[i][1]);
+                System.out.println();
+                } 
+        
+                for(int i=0; i<cantEquipos; i++){
+                        for(int j=0; j<cantEquipos; j++){
+                    System.out.print(matriz[i][j]+" ");
+                    }
+                System.out.println("");
+                }
+        
+        */
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
+        
+        
+        
+        
+        
+        
+        boolean impar=(cantEquipos%2==0);
         if(impar){
            JOptionPane.showMessageDialog(null, "El numero de equipos ingresados es impar", "Error al Generar el Calendario",JOptionPane.ERROR_MESSAGE);
         }   
-       
-       
-        
-        /*for(int i=0; i<cantEquipos; i++){
-            for(int j=0; j<=1; j++){
-            matriz[i][j]= objEquipo.getIDEquipos();
-            }
-        }
-        
-         for(int i=0; i<cantEquipos; i++){
-            for(int j=0; j<=1; j++){
-                System.out.println(matriz[i][j]);
-            }
-        }    k++;
-        }
-        
-        for(int i=0; i<cantEquipos; i++){
-            for(int j=0; j<=1; j++){
-                System.out.println(matriz[i][j]);
-        }
-        }
-        
-        
-        
-        /*
-        int j=0;
-        
-        for(int[] equipo: matriz){
-              matriz[0][0] = (nuevaConexion.rst.getInt("idequipos"));
-              j++;
-               System.out.println(equipo);
-        }
-        
-        
-        
-         */
- 
-       
-        
-        /*for(int i=0; i<cantEquipos; i++){
-            for(int j=0; j<=1; j++){
-            matriz[i][j]= objEquipo.getIDEquipos();
-            }
-        }
-        
-         for(int i=0; i<cantEquipos; i++){
-            for(int j=0; j<=1; j++){
-                System.out.println(matriz[i][j]);
-            }
-        }*/
        
         
         

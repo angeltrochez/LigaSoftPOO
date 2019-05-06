@@ -237,7 +237,6 @@ public class CalendarioGUI extends javax.swing.JFrame {
     private void btnCrearTorneoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTorneoActionPerformed
         Calendario cal = new Calendario();
         cal.generarCalendario();
-        
     }//GEN-LAST:event_btnCrearTorneoActionPerformed
 
     private void btnIngresarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarEstActionPerformed

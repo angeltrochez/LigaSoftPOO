@@ -30,20 +30,15 @@ public class ConexionDB {
             return;
         }
         
-        String url="jdbc:postgresql://localhost:5432/LigaSotfDB?";
-        String passwordDB ="abc123**";
+        String url="jdbc:postgresql://localhost:5432/asd?";
+        String passwordDB ="asd.456";
        
         try{
             Class.forName("org.postgresql.Driver");
             
             conexion = DriverManager.getConnection(url,"postgres",passwordDB);
          
-                    
-           /* if(conexion != null){
-                 JOptionPane.showMessageDialog(null, "Conectando a la base de datos...", "Estableciendo Conexion",JOptionPane.OK_OPTION);
-             
-             }*/
-                   
+           
       }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Problemas de Conexión "+e.getMessage(), "Error de Conexión",JOptionPane.ERROR_MESSAGE);
       }
