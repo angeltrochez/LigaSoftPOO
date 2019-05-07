@@ -122,100 +122,60 @@ public class Calendario {
         int cantEquipos = clubes.size();
         cantEquipos++;
         int matriz[][] = new int[cantEquipos][cantEquipos];
-    //    int temp[][] = new int[(cantEquipos-2)*(cantEquipos-1)][2]; //[cant partidos en total][local,visita]
         
+        int numeroV; 
+        int n;
         int k=0;
+        int local;
+        boolean ban;
+        int jornadas=1;
+        
         for(int i=1; i<cantEquipos; i++){
             matriz[0][i]=clubes.get(k);
             matriz[i][0]=clubes.get(k);
             k++;
         }
         
-        /*
-        for(int i=0; i<cantEquipos; i++){
-            for(int j=0; j<cantEquipos; j++){
-                System.out.print(matriz[i][j]+" ");
-            }
-            System.out.println("");
-        }
+       
+        do{
+            n=0;
 
-        
-        */
-        System.out.println("-----------------------------");
-
-        int numeroV; 
-        int n=1;
-        int local=1;
-        //int tem=0;
-            
-        
-        do{  
-            n=1;
-            do{        
+            do{  
+                ban=false;
+                
                 do{
+                    local = (int)(Math.random() * cantEquipos-1)+1;
                     numeroV = (int)(Math.random() * cantEquipos-1)+1;
                 }while(numeroV==local);
                 
-                if(matriz[local][numeroV]==0){
-                   matriz[local][numeroV]=1;          
-                   
-                //    temp[tem][0] = matriz[local][0];
-                //    temp[tem][1] = matriz[0][numeroV];
-                //    temp[tem][2] = 0; cambiar tamaño de las columnas
-                
-                    System.out.println(matriz[local][0]+" vrs "+matriz[0][numeroV]);
-                    //tem++;
-                    n++;
-                }
-                }while(n<(cantEquipos-1));
-            
-                System.out.println("");
-            local++;
-        }while(local<cantEquipos);
-        
-
-        /*
-
-
-                for(int i=0; i<(cantEquipos-2)*(cantEquipos-1); i++){
-                System.out.print(temp[i][0]+" Vrs "+temp[i][1]);
-                System.out.println();
+                if(matriz[local][numeroV]==0 && matriz[numeroV][local]==0){
+                    
+                    for(int i=1;i<cantEquipos;i++){
+                        if(matriz[local][i]==1 || matriz[i][numeroV]==1){
+                            ban=true;
+                        }
+                    }
+                    
+                    if(ban!=true){
+                        matriz[local][numeroV]=1;       
+                        matriz[numeroV][local]=1;
+                        System.out.println(matriz[local][0]+" vrs "+matriz[0][numeroV]+"..."+n);
+                        n++;
+                   }
                 } 
-        
+            }while(n<(cantEquipos/2));
+
+        }while(jornadas<(cantEquipos-1));
+
                 for(int i=0; i<cantEquipos; i++){
                         for(int j=0; j<cantEquipos; j++){
                     System.out.print(matriz[i][j]+" ");
                     }
                 System.out.println("");
                 }
-        
-        */
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-       
-        
-        
-        
-        
-        
-        
+                
+                
+
         boolean impar=(cantEquipos%2==0);
         if(impar){
            JOptionPane.showMessageDialog(null, "El numero de equipos ingresados es impar", "Error al Generar el Calendario",JOptionPane.ERROR_MESSAGE);
