@@ -123,26 +123,30 @@ public class Calendario {
         }
         int cantEquipos = clubes.size();
         cantEquipos++;
-        int matriz[][] = new int[(cantEquipos/2)*(cantEquipos-1)][2];  //imprimir -2
+        int matriz[][] = new int[(cantEquipos/2)*(cantEquipos-1)][3];  //imprimir -2
         
         int k=0;
- 
+        int Jornada1;
+        int Jornada2 = ((cantEquipos/2)*(cantEquipos-2))/2;
         for(int i=0;i<cantEquipos-1;i++){
             for(int j=i+1; j<cantEquipos-1; j++){
+                //    if(j%2==0){
                     matriz[k][0]=clubes.get(i);
                     matriz[k][1]=clubes.get(j);
+                /*    }else{
+                    matriz[k][0]=clubes.get(j);
+                    matriz[k][1]=clubes.get(i);
+                    }
+                */            
                     k++;
             }
         }
 
-        
         for(int i=0;i<((cantEquipos/2)*(cantEquipos-2));i++){
                 equipoLocal = (matriz[i][0]);
                 equipoVisita = (matriz[i][1]);
                 partido = ("select concat((select nombre from equipos where idequipos ="+equipoLocal+" ),' vs ',(select nombre from equipos where idequipos ="+equipoVisita+")");
         }
-        
-        
         
         
         boolean impar=(cantEquipos%2==0);
@@ -160,4 +164,36 @@ public class Calendario {
     }//fin de la funcion
     
 }
+
+
+
+
+        /*
+        //Asignando jornadas a cada uno.
+        
+        int i=0;
+        while(i<((cantEquipos/2)*(cantEquipos-2))){{
+ 
+            for(int temp1=1;temp1<cantEquipos-1;temp1++){
+                matriz[i][2]=temp1;
+                i++;
+            }
+            
+            for(int temp2=cantEquipos-2;temp2>=0;temp2--){
+                matriz[i][2]=temp2;
+                i++;
+            }
+            
+        }
+                    
+        
+        
+        
+        /*  Imprimir en pantalla
+        for(i=0;i<(cantEquipos/2)*(cantEquipos-2);i++){
+                System.out.println(i+1+" "+matriz[i][0]+" vrs "+matriz[i][1]+" Jornada: "+matriz[i][2]);
+        }
+        
+        }*/
+        
 
