@@ -240,11 +240,15 @@ public class CalendarioGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearTorneoActionPerformed
 
     private void btnIngresarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarEstActionPerformed
-        // TODO add your handling code here:
+        EstPartidosGUI abrir = new EstPartidosGUI();
+        abrir.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnIngresarEstActionPerformed
 
     private void btnVerEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerEstActionPerformed
-        // TODO add your handling code here:
+        EstPartidosGUI abrir = new EstPartidosGUI();
+        abrir.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnVerEstActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
