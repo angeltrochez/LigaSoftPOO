@@ -61,74 +61,51 @@ public class Calendario {
         return equipoVisita;
     }
 
-
     public void setEquipoVisita(String equipoVisita) {
         this.equipoVisita = equipoVisita;
     }
-
 
     public String getFecha() {
         return fecha;
     }
 
-    /**
-     * @param fecha the fecha to set
-     */
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    /**
-     * @return the hora
-     */
     public String getHora() {
         return hora;
     }
 
-    /**
-     * @param hora the hora to set
-     */
     public void setHora(String hora) {
         this.hora = hora;
     }
 
-    /**
-     * @return the lugar
-     */
     public String getLugar() {
         return lugar;
     }
 
-    /**
-     * @param lugar the lugar to set
-     */
     public void setLugar(String lugar) {
         this.lugar = lugar;
     }
 
-    /**
-     * @return the partido
-     */
     public String getPartido() {
         return partido;
     }
 
-    /**
-     * @param partido the partido to set
-     */
     public void setPartido(String partido) {
         this.partido = partido;
     }
-   
-   
-    
+
     
     public void generarCalendario(){
+        
     ConexionDB nuevaConexion = new ConexionDB();
     nuevaConexion.conexion(); 
     
     ArrayList <Integer> clubes=new ArrayList<>();
-     
+    
+    
     try{   
         nuevaConexion.st =  nuevaConexion.conexion.createStatement();
         
@@ -137,103 +114,54 @@ public class Calendario {
         
         
         nuevaConexion.rst = nuevaConexion.st.executeQuery(nuevaConexion.consultaSQL);
-             
-
-       
 
         while(nuevaConexion.rst.next()){
             int id =(nuevaConexion.rst.getInt("idequipos"));
             clubes.add(id);
         }
+       
         int cantEquipos = clubes.size();
-        
-        int matriz[][] = new int[cantEquipos][cantEquipos];
-        
-        
-        
-      //  matriz[0][0]=0;
-        
+        cantEquipos++;
+        int matriz[][] = new int[(cantEquipos/2)*(cantEquipos-1)][2];
         
         int k=0;
-        for(int i=0; i<cantEquipos; i++){
-            for(int j=0; j<cantEquipos; j++){
-                matriz[0][j]=1;//clubes.get(k);
-                matriz[i][0]=1; //clubes.get(k);
-                k++;
+ 
+        for(int i=0;i<cantEquipos-1;i++){
+            for(int j=i+1; j<cantEquipos-1; j++){
+                System.out.println("Equipos Local "+clubes.get(i)+" VS Equipo Visita "+clubes.get(j));
+                    matriz[k][0]=clubes.get(i);
+                    matriz[k][1]=clubes.get(j);
+                    k++;
             }
+            System.out.println("");
         }
         
-        for(int i=1; i<=cantEquipos; i++){
-            for(int j=1; j<=cantEquipos; j++){
-                matriz[i][j]=0;
-            }
-        }
-        
-        for(int i=0; i<=cantEquipos; i++){
-            for(int j=0; j<=cantEquipos; j++){
-                System.out.println(matriz[i][j]);
+        for(int i=0;i<((cantEquipos/2)*(cantEquipos-2));i++){
+            for(int j=0;j<2;j++){
+                System.out.print(matriz[i][j]);
             }
             System.out.println("");
         }
 
         
-
-      
- 
-        boolean impar=(cantEquipos%2!=0);
+        
+        
+        
+        
+        /*int cantEquipos = clubes.size();
+        cantEquipos++;
+       
+        
+        for(int i=1;i<cantEquipos;i++){
+            for(int j=i+1; j<cantEquipos; j++){
+                           
+            }
+        }
+        */
+        boolean impar=(cantEquipos%2==0);
         if(impar){
            JOptionPane.showMessageDialog(null, "El numero de equipos ingresados es impar", "Error al Generar el Calendario",JOptionPane.ERROR_MESSAGE);
         }   
-       
-       
-        
-        /*for(int i=0; i<cantEquipos; i++){
-            for(int j=0; j<=1; j++){
-            matriz[i][j]= objEquipo.getIDEquipos();
-            }
-        }
-        
-         for(int i=0; i<cantEquipos; i++){
-            for(int j=0; j<=1; j++){
-                System.out.println(matriz[i][j]);
-            }
-        }    k++;
-        }
-        
-        for(int i=0; i<cantEquipos; i++){
-            for(int j=0; j<=1; j++){
-                System.out.println(matriz[i][j]);
-        }
-        }
-        
-        
-        
-        /*
-        int j=0;
-        
-        for(int[] equipo: matriz){
-              matriz[0][0] = (nuevaConexion.rst.getInt("idequipos"));
-              j++;
-               System.out.println(equipo);
-        }
-        
-        
-        
-         */
- 
-       
-        
-        /*for(int i=0; i<cantEquipos; i++){
-            for(int j=0; j<=1; j++){
-            matriz[i][j]= objEquipo.getIDEquipos();
-            }
-        }
-        
-         for(int i=0; i<cantEquipos; i++){
-            for(int j=0; j<=1; j++){
-                System.out.println(matriz[i][j]);
-            }
-        }*/
        
         
         

@@ -38,12 +38,7 @@ public class ConexionDB {
             
             conexion = DriverManager.getConnection(url,"postgres",passwordDB);
          
-                    
-           /* if(conexion != null){
-                 JOptionPane.showMessageDialog(null, "Conectando a la base de datos...", "Estableciendo Conexion",JOptionPane.OK_OPTION);
-             
-             }*/
-                   
+           
       }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Problemas de Conexión "+e.getMessage(), "Error de Conexión",JOptionPane.ERROR_MESSAGE);
       }
