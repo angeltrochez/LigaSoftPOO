@@ -23,12 +23,30 @@ public class Calendario {
 
    private int idTorneo;
    private int jornada;
-   private String equipoLocal;
-   private String equipoVisita;
+   private int equipoLocal;
+   private int equipoVisita;
    private String fecha;
    private String hora;
    private String lugar;
    private String partido;
+   private String estadio;
+   ArrayList<Equipos> lista = new ArrayList<>();
+
+    public int getEquipoLocal() {
+        return equipoLocal;
+    }
+
+    public void setEquipoLocal(int equipoLocal) {
+        this.equipoLocal = equipoLocal;
+    }
+
+    public int getEquipoVisita() {
+        return equipoVisita;
+    }
+
+    public void setEquipoVisita(int equipoVisita) {
+        this.equipoVisita = equipoVisita;
+    }
  
     public int getIdTorneo() {
         return idTorneo;
@@ -49,21 +67,7 @@ public class Calendario {
         this.jornada = jornada;
     }
 
-     public String getEquipoLocal() {
-        return equipoLocal;
-    }
 
-    public void setEquipoLocal(String equipoLocal) {
-        this.equipoLocal = equipoLocal;
-    }
-
-    public String getEquipoVisita() {
-        return equipoVisita;
-    }
-
-    public void setEquipoVisita(String equipoVisita) {
-        this.equipoVisita = equipoVisita;
-    }
 
     public String getFecha() {
         return fecha;
@@ -109,7 +113,6 @@ public class Calendario {
     try{   
         nuevaConexion.st =  nuevaConexion.conexion.createStatement();
         
-      //  nuevaConexion.consultaSQL1=("select count(estado) from equipos where estado ='Activo'");
         nuevaConexion.consultaSQL=("select idequipos from equipos where estado ='Activo'");
         
         
@@ -122,42 +125,45 @@ public class Calendario {
        
         int cantEquipos = clubes.size();
         cantEquipos++;
+
         int matriz[][] = new int[(cantEquipos/2)*(cantEquipos-1)][2];
-        
         int k=0;
- 
+        
         for(int i=0;i<cantEquipos-1;i++){
             for(int j=i+1; j<cantEquipos-1; j++){
-                System.out.println("Equipos Local "+clubes.get(i)+" VS Equipo Visita "+clubes.get(j));
+                   for(int l=1; l<=cantEquipos/2;l++)
+                    jornada = l;
+                    if(j%2==0){
                     matriz[k][0]=clubes.get(i);
                     matriz[k][1]=clubes.get(j);
+                    
+                    }else{
+                    matriz[k][0]=clubes.get(j);
+                    matriz[k][1]=clubes.get(i);
+                    
+                    }
                     k++;
+                        
+                        equipoLocal=clubes.get(i);
+                        equipoVisita=clubes.get(j);
+                   
+                    nuevaConexion.st.executeUpdate("INSERT INTO jornadas (fk_equilocal, fk_equivisita, temporada, jornada) values("
+                                            + "'"+equipoLocal+"',"
+                                            + "'"+equipoVisita+"',"
+                                            + "'Partido de Ida',"
+                                            + "'"+jornada+"')");
+                    nuevaConexion.st.executeUpdate("INSERT INTO jornadas (fk_equilocal, fk_equivisita, temporada, jornada) values("
+                                            + "'"+equipoVisita+"',"
+                                            + "'"+equipoLocal+"',"
+                                            + "'Partido de Vuelta',"
+                                            + "'"+jornada+"')");
+                    
             }
-            System.out.println("");
+            
         }
         
-        for(int i=0;i<((cantEquipos/2)*(cantEquipos-2));i++){
-            for(int j=0;j<2;j++){
-                System.out.print(matriz[i][j]);
-            }
-            System.out.println("");
-        }
-
-        
-        
-        
-        
-        
-        /*int cantEquipos = clubes.size();
-        cantEquipos++;
+                 
        
-        
-        for(int i=1;i<cantEquipos;i++){
-            for(int j=i+1; j<cantEquipos; j++){
-                           
-            }
-        }
-        */
         boolean impar=(cantEquipos%2==0);
         if(impar){
            JOptionPane.showMessageDialog(null, "El numero de equipos ingresados es impar", "Error al Generar el Calendario",JOptionPane.ERROR_MESSAGE);
@@ -172,5 +178,97 @@ public class Calendario {
     
     }//fin de la funcion
     
+    
+    public void MostrarJornadas(){
+    
+      ConexionDB Eq = new ConexionDB();
+      
+      Eq.conexion();
+      
+      int fila = CalendarioGUI.jtDatos.getSelectedRow();
+      
+        try{
+            Eq.consultaSQL = "select concat(equi.nombre, ' VS ', equip.nombre) AS partido, equi.estadio, jor.idjornadas from  jornadas jor " +
+                                " inner join equipos equi on  jor.fk_equilocal = equi.idequipos " +
+                                " inner join equipos equip on jor.fk_equivisita = equip.idequipos "+
+                                "where jor.idjornadas="+CalendarioGUI.jtDatos.getValueAt(fila, 0)           ;
+            
+            Eq.st = Eq.conexion.createStatement();
+            Eq.rst = Eq.st.executeQuery(Eq.consultaSQL);
+            Eq.rst.next();
+            
+            CalendarioGUI.txtIdJornada.setText( Eq.rst.getString("idjornadas"));
+            CalendarioGUI.txtPartido.setText(Eq.rst.getString("partido"));
+            CalendarioGUI.txtLugar.setText(Eq.rst.getString("estadio"));
+            
+            
+            
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Problemas de Conexión "+e.getMessage(), "Error de Conexión",JOptionPane.ERROR_MESSAGE);
+      }
+    
+    }
+    
+    public void buscar(){
+    ConexionDB Cal = new ConexionDB();
+      
+        Cal.conexion();
+      
+        try{
+                Cal.st =  Cal.conexion.createStatement();
+                Cal.consultaSQL = "select concat(equi.nombre, ' VS ', equip.nombre) AS partido, equi.estadio, equi.ciudad, jor.idjornadas from   jornadas jor" +
+"				inner join equipos equi on  jor.fk_equilocal = equi.idequipos" +
+"				inner join equipos equip on jor.fk_equivisita = equip.idequipos ";
+                
+         
+                Cal.rst=Cal.st.executeQuery(Cal.consultaSQL);
+         
+           
+          
+                    ArrayList<Calendario> lista = new ArrayList<>();
+                    while(Cal.rst.next()){
+                        Calendario obj = new Calendario();
+                        obj.idTorneo= Cal.rst.getInt("idjornadas");
+                        obj.partido = Cal.rst.getString("partido");
+                        obj.estadio = Cal.rst.getString("estadio");
+                        obj.lugar = Cal.rst.getString("ciudad");
+                                                
+                        lista.add(obj);
+                    }
+           
+                DefaultTableModel model = new DefaultTableModel();
+                model.addColumn("Codigo");
+                model.addColumn("Partido");
+                model.addColumn("Estadio");
+                model.addColumn("Ciudad");
+                model.addColumn("Fecha");
+                
+                
+                                        
+                String datos[]= new String[5];
+                    
+                    for(Calendario elem : lista){
+                        datos[0]=Integer.toString(elem.idTorneo);                        
+                        datos[1]=(elem.partido);
+                        datos[2]=(elem.estadio);
+                        datos[3]=(elem.lugar);
+                        datos[4]=(elem.fecha);
+                        
+                        model.addRow(datos);
+                    }
+          
+                CalendarioGUI.jtDatos.setModel(model);
+          
+        }catch(SQLException ex){
+                JOptionPane.showMessageDialog(null, "Problemas de Conexión "+ex.getMessage(), "Error de Conexión",JOptionPane.ERROR_MESSAGE);
+      }
+    }
 }
+
+
+
+
+     
+        
 

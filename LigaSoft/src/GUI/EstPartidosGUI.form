@@ -23,107 +23,116 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="btnMenuP" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel1" alignment="0" min="-2" pref="461" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnAgregar2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnAgregar1" min="-2" pref="83" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel1" alignment="0" min="-2" pref="461" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnAgregar2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnAgregar1" min="-2" pref="83" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="JLEquipoLocal" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtGolesL" alignment="0" pref="135" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel26" max="32767" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel25" min="-2" pref="144" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="txtPosesionL" min="-2" pref="135" max="-2" attributes="0"/>
-                                                  <Component id="txtDispariosDL" min="-2" pref="135" max="-2" attributes="0"/>
-                                                  <Component id="txtTAmarillasL" min="-2" pref="135" max="-2" attributes="0"/>
-                                                  <Component id="txtFaltasL" min="-2" pref="135" max="-2" attributes="0"/>
-                                                  <Component id="txtOffsideL" min="-2" pref="135" max="-2" attributes="0"/>
-                                                  <Component id="txtTRojasL" min="-2" pref="135" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="JLEquipoLocal" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txtGolesL" alignment="0" pref="135" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel22" min="-2" pref="144" max="-2" attributes="0"/>
-                                                  <Component id="jLabel20" min="-2" pref="144" max="-2" attributes="0"/>
-                                                  <Component id="jLabel19" min="-2" pref="144" max="-2" attributes="0"/>
-                                                  <Component id="jLabel18" min="-2" pref="144" max="-2" attributes="0"/>
-                                                  <Component id="jLabel15" min="-2" pref="144" max="-2" attributes="0"/>
-                                                  <Component id="jLabel13" min="-2" pref="144" max="-2" attributes="0"/>
+                                                  <Component id="jLabel26" max="32767" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                      <Component id="jLabel25" min="-2" pref="144" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
-                                          <Component id="btnHabilitarCampos" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Component id="txtPosesionL" min="-2" pref="135" max="-2" attributes="0"/>
+                                                          <Component id="txtDispariosDL" min="-2" pref="135" max="-2" attributes="0"/>
+                                                          <Component id="txtTAmarillasL" min="-2" pref="135" max="-2" attributes="0"/>
+                                                          <Component id="txtFaltasL" min="-2" pref="135" max="-2" attributes="0"/>
+                                                          <Component id="txtOffsideL" min="-2" pref="135" max="-2" attributes="0"/>
+                                                          <Component id="txtTRojasL" min="-2" pref="135" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jLabel22" min="-2" pref="144" max="-2" attributes="0"/>
+                                                          <Component id="jLabel20" min="-2" pref="144" max="-2" attributes="0"/>
+                                                          <Component id="jLabel19" min="-2" pref="144" max="-2" attributes="0"/>
+                                                          <Component id="jLabel18" min="-2" pref="144" max="-2" attributes="0"/>
+                                                          <Component id="jLabel15" min="-2" pref="144" max="-2" attributes="0"/>
+                                                          <Component id="jLabel13" min="-2" pref="144" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="btnHabilitarCampos" min="-2" pref="75" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="btnEstJugador" min="-2" pref="169" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="btnRegresar" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel12" max="32767" attributes="0"/>
+                                          <Component id="jLabel10" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="cbxJornada" pref="142" max="32767" attributes="0"/>
+                                          <Component id="cbxPartido" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel10" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="cbxJornada" pref="142" max="32767" attributes="0"/>
-                                  <Component id="cbxPartido" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="JLEquipoVisita" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtGolesV" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="txtPosesionV" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
-                                      <Component id="txtDispariosDV" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
-                                      <Component id="txtTAmarillasV" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
-                                      <Component id="txtFaltasV" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
-                                      <Component id="txtOffsideV" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
-                                      <Component id="txtTRojasV" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                                  <Component id="JLEquipoVisita" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtGolesV" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Component id="txtPosesionV" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                                              <Component id="txtDispariosDV" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                                              <Component id="txtTAmarillasV" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                                              <Component id="txtFaltasV" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                                              <Component id="txtOffsideV" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                                              <Component id="txtTRojasV" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="btnBuscar" alignment="1" min="-2" pref="117" max="-2" attributes="0"/>
+                                          <Component id="btnBuscar1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnBuscar" alignment="1" min="-2" pref="117" max="-2" attributes="0"/>
-                                  <Component id="btnBuscar1" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
                       </Group>
+                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnMenuP" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -144,7 +153,7 @@
                   <Component id="cbxPartido" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="btnBuscar1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="JLEquipoLocal" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="JLEquipoVisita" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -209,10 +218,14 @@
                   <Component id="btnAgregar1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAgregar2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnHabilitarCampos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEstJugador" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="9" max="32767" attributes="0"/>
-              <Component id="btnMenuP" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnMenuP" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRegresar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -224,7 +237,7 @@
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value=".:Ingresar Resultados:."/>
+        <Property name="text" type="java.lang.String" value=".:Estadisticas:."/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
@@ -565,6 +578,28 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Ver Estadisticas"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEstJugador">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Estadisticas por Jugador"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEstJugadorActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRegresar">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Atr&#xe1;s"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegresarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

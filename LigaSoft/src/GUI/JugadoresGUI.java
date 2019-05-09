@@ -53,6 +53,7 @@ public class JugadoresGUI extends javax.swing.JFrame {
         txtIdJugador = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtPosicion = new javax.swing.JTextField();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -159,6 +160,14 @@ public class JugadoresGUI extends javax.swing.JFrame {
 
         txtPosicion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
+        btnRegresar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnRegresar.setText("Atrás");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -199,11 +208,12 @@ public class JugadoresGUI extends javax.swing.JFrame {
                                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnActualizar))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(141, 141, 141)
-                                .addComponent(btnMenuP)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(btnActualizar)))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMenuP)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -252,10 +262,12 @@ public class JugadoresGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMenuP))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMenuP)
+                    .addComponent(btnRegresar)))
         );
 
         pack();
@@ -329,6 +341,12 @@ public class JugadoresGUI extends javax.swing.JFrame {
         juga = null;
     }//GEN-LAST:event_jtDatosMouseClicked
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        EquiposGUI abrir = new EquiposGUI();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     public void limpiar(){
     txtIdJugador.setText(null);    
     txtNombreCompleto.setText(null);    
@@ -381,6 +399,7 @@ public class JugadoresGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnMenuP;
+    private javax.swing.JButton btnRegresar;
     public static javax.swing.JComboBox<String> cbxEstado;
     public static javax.swing.JComboBox<String> cbxSexo;
     private javax.swing.JLabel jLabel1;

@@ -133,10 +133,11 @@ public class Equipos {
                   + " WHERE idequipos="+IDEquipos;
           
             Eq.st.executeUpdate(Eq.consultaSQL);
-        
+            
       }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Problemas de Conexión "+e.getMessage(), "Error de Conexión",JOptionPane.ERROR_MESSAGE);
       }
+        
    
    }
       
@@ -217,8 +218,4 @@ public class Equipos {
    
    }  
 
-
-    
-    
-    
 }
